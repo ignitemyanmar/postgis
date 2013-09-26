@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>New</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+		<![endif]-->
+		<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<style>
+			#map { height: 240px; }
+			div.snip{
+				width:100%;
+				margin:2px;
+			}
+			label{
+				font-size:14px;
+				width:49%;
+				text-align:right;
+				display:inline-block;
+			}
+			button, select{
+				width;100%;
+				font-size:14px;
+				padding:4px;
+				background-color:#5bc4be;
+				color:#fff;	
+				border:0px;
+			}
+			select{
+				width:50%;
+			}
+			button{
+				width:49%;
+			}
+			h2{
+				padding:0px;
+				margin:2px;
+				color:#5bc4be;
+				text-align:center;
+			}
+		</style>
+        </head>
+	<body>
+		<h2>New POI</h2>
+	        <div id="map"></div>
+		<div class="snip">
+			<button onclick="locate()" style="width:49%;">Locate Me</button>
+			<button onclick="mark()" style="width:49%;">Mark here</button>
+		</div>
+		<div class="snip">
+			<label>Save as category</label>
+			<select id="cat_id" name='cat_id'>
+				<option value="1">Airport</option>
+				<option value="2">Airfield</option>
+				<option value="3">ATM</option>
+				<option value="4">Bank</option>
+				<option value="5">Rental</option>
+				<option value="6">Station</option>
+				<option value="7">Pagoda</option>
+				<option value="8">Restaurant</option>
+				<option value="9">Cinema</option>
+				<option value="10">Office</option>
+				<option value="11">Hospital</option>
+				<option value="12">Phone</option>
+				<option value="13">Waterfall</option>
+				<option value="14">Petrol</option>
+				<option value="15">Market</option>
+				<option value="16">Monastery</option>
+				<option value="17">Park</option>
+				<option value="18">Parking</option>
+				<option value="19">Post</option>
+				<option value="20">Prison</option>
+				<option value="21">Public Building</option>
+				<option value="22">School</option>
+				<option value="23">Building</option>
+				<option value="24">Swimming Pool</option>
+				<option value="25">Tennis Court</option>
+				<option value="26">Toilet</option>
+				<option value="27">University</option>
+				<option value="28">Commercial Building</option>
+				<option value="29">Industrial Building</option>
+				<option value="30">Residential Building</option>
+				<option value="31">Tower</option>
+				<option value="32">Rails Station</option>
+				<option value="33">Baptist Church</option>
+				<option value="34">Catholic Church</option>
+				<option value="35">Chinese Temple</option>
+				<option value="36">Bus Stop</option>
+				<option value="37">Pedestrian</option>
+				<option value="38">Street</option>
+				<option value="39">Traffic</option>
+				<option value="40">Boundary</option>
+				<option value="41">Castle</option>
+				<option value="42">Memorial</option>
+				<option value="43">Ruins</option>
+				<option value="44">Cemetery</option>
+				<option value="45">Commercial</option>
+				<option value="46">Construction</option>
+				<option value="47">Farm</option>
+				<option value="48">Garden</option>
+				<option value="49">Forest</option>
+				<option value="50">Industrial</option>
+				<option value="51">Golf Course</option>
+				<option value="52">Military</option>
+				<option value="53">Reservoir</option>
+				<option value="54">Residential</option>
+				<option value="55">Village</option>
+				<option value="56">Vineyard</option>
+				<option value="57">Sport Center</option>
+				<option value="58">Golf</option>
+				<option value="59">Playground</option>
+				<option value="60">Stadium</option>
+				<option value="61">Machine</option>
+				<option value="62">Lighthouse</option>
+				<option value="63">Mine</option>
+				<option value="64">Bridge</option>
+				<option value="65">Check-point</option>
+				<option value="66">Beach</option>
+				<option value="67">Volcano</option>
+				<option value="68">Entrance</option>
+				<option value="69">Land</option>
+				<option value="70">Coastline</option>
+				<option value="71">Mountain</option>
+				<option value="72">Season</option>
+				<option value="73">Water</option>
+				<option value="74">Wetland</option>
+				<option value="75">City</option>
+				<option value="76">Country</option>
+				<option value="77">Island</option>
+				<option value="78">Region</option>
+				<option value="79">Countryside</option>
+				<option value="80">Railway</option>
+				<option value="81">Buddhist Temple</option>
+				<option value="82">Christian Church</option>
+				<option value="83">Hindu Temple</option>
+				<option value="84">Mosque</option>
+				<option value="85">Japanese Shrine</option>
+				<option value="86">Water way</option>
+				<option value="87">Bakery</option>
+				<option value="88">Blacksmith</option>
+				<option value="89">Book Store</option>
+				<option value="90">Vehicel</option>
+				<option value="91">Workshop</option>
+				<option value="92">Fashion</option>
+				<option value="93">Computer</option>
+				<option value="94">Convenience Store</option>
+				<option value="95">Department Store</option>
+				<option value="96">Florist</option>
+				<option value="97">Food</option>
+				<option value="98">Gift Shop</option>
+				<option value="99">Internet Cafe</option>
+				<option value="100">Jewellary</option>
+				<option value="101">Shopping Mall</option>
+				<option value="102">Massage &amp; SPA</option>
+				<option value="103">Optician</option>
+				<option value="104">Supermarket</option>
+				<option value="105">Travel Agency</option>
+				<option value="106">Store</option>
+				<option value="107">Soccer</option>
+				<option value="108">Art</option>
+				<option value="109">Attraction</option>
+				<option value="110">Camp</option>
+				<option value="111">Hotel</option>
+				<option value="112">Information</option>
+				<option value="113">Museum</option>
+				<option value="114">Zoo</option>
+				<option value="115">River</option>
+				<option value="116">Show Room</option>
+				<option value="117">Car Accessories</option>
+			</select>
+		</div>
+		<div class="snip">
+			<label>Update as id</label>
+			<input type="text" id="id" placeholder="ID">
+		</div>
+		<div class="snip">
+			<input type="text" id="name" placeholder="Name" style="width:49%;">
+			<input type="text" id="room_no" placeholder="Room No" style="width:49%;">
+			<input type="text" id="building_no" placeholder="Building No" style="width:49%;">
+			<input type="text" id="building_name" placeholder="Building Name" style="width:49%;">
+			<input type="text" id="street" placeholder="Street" style="width:49%;">
+			<input type="text" id="quarter" placeholder="Quarter" style="width:49%;">
+			<input type="text" id="township" placeholder="Township" style="width:49%;">
+			<input type="text" id="city" placeholder="City" style="width:49%;">
+			<input type="text" id="country" placeholder="Country" style="width:49%;">
+			<input type="text" id="zip_code" placeholder="Zip Code" style="width:49%;">
+		</div>
+		<div class="snip">
+			<button onclick="savePoint()" >Save</button>
+			<button onclick="updatePoint()" >Update</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var loc;
+		var markerGroup = new L.LayerGroup();
+		function mark(){	
+			markerGroup.clearLayers();
+			loc = map.getCenter();
+			markerGroup.clearLayers();
+			var marker = L.marker([loc.lat, loc.lng]);
+			markerGroup.addLayer(marker);
+		}
+		function locate(){
+			markerGroup.clearLayers();
+			map.stopLocate();
+			map.locate({
+				setView: true, 
+				maxZoom: 16,
+				timeout: 5000, 
+			});
+		}
+	
+		function savePoint(){
+			loc = map.getCenter();
+			markerGroup.clearLayers();
+			var name = $('#name').val();
+			var room_no = $('#room_no').val();
+			var building_no = $('#building_no').val();
+			var buidling_name = $('#building_name').val();
+			var street = $('#street').val();
+			var quarter = $('#quarter').val();
+			var township = $('#township').val();
+			var city = $('#city').val();
+			var country = $('#country').val();
+			var zipcode = $('#zip_code').val();
+			if(name){
+			var pData = {
+				"name": name,
+				"cat_id": $('#cat_id').val(),
+				"lon": loc.lng,
+				"lat": loc.lat,
+				"room_no": room_no,
+				"building_no": building_no,
+				"building_name":buidling_name,
+				"street": street,
+				"quarter": quarter,
+				"township": township,
+				"city": city,
+				"country":country,
+				"zip_code": zipcode
+			};
+			$.ajax({
+				url: "/poi",
+				method: "POST",
+				data: pData,	
+				complete: function(xhr){
+					var obj =JSON.parse(xhr.responseText);
+					alert(obj.message);
+				}
+			});
+			}
+		}
+		function updatePoint(){
+			loc = map.getCenter();
+			markerGroup.clearLayers();
+			var id = $('#id').val();
+			var name = $('#name').val();
+			var room_no = $('#room_no').val();
+			var building_no = $('#building_no').val();
+			var buidling_name = $('#building_name').val();
+			var street = $('#street').val();
+			var quarter = $('#quarter').val();
+			var township = $('#township').val();
+			var city = $('#city').val();
+			var country = $('#country').val();
+			var zipcode = $('#zip_code').val();
+			if(name){
+			var pData = {
+				"id":id,
+				"name": name,
+				"cat_id": $('#cat_id').val(),
+				"lon": loc.lng,
+				"lat": loc.lat,
+				"room_no": room_no,
+				"building_no": building_no,
+				"building_name":buidling_name,
+				"street": street,
+				"quarter": quarter,
+				"township": township,
+				"city": city,
+				"country":country,
+				"zip_code": zipcode
+			};
+			$.ajax({
+				url: "/poi",
+				method: "PUT",
+				data: pData,	
+				complete: function(xhr){
+					var obj =JSON.parse(xhr.responseText);
+					alert(obj.message);
+				}
+			});
+			}
+		}
+
+		var map = L.map('map').setView([16.7743793,96.1588068], 16);
+		markerGroup.addTo(map);
+		L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+				    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+				        maxZoom: 18
+					}).addTo(map);
+		map.on("locationfound",function(e){
+			markerGroup.clearLayers();
+			var marker = L.marker([e.latlng.lat, e.latlng.lng]);
+			markerGroup.addLayer(marker);
+		});
+		map.on("locationerror",function(error, code){
+			alert("Sorry, could not locate you.");	
+		});
+	</script>
+</html>

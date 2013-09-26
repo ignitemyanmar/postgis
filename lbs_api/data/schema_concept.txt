@@ -1,0 +1,29 @@
+osm_point_of_interests
+id integer,
+name  character varying(255),
+name_mm character varying(255),
+osm_id integer,
+category_id integer,
+src character varying(255),
+geometry 
+
+categories
+id integer,
+name character varying(255),
+osm_category_name character varying(255),
+
+point_of_interests
+id integer,
+name  character varying(255),
+name_mm character varying(255),
+category_id integer,
+src character varying(255),
+tag text
+geometry 
+
+osm_roads
+id integer,
+osm_id integer,
+name character varying(255),
+road_category character varying(255),
+geometry

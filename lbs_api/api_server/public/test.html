@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>New</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+		<![endif]-->
+		<script src="../../jquery-1.7.2.min.js"></script>
+        </head>
+	<body>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			var pData = {
+				"name": "Sumic Park View",
+				"cat_id": 1,
+				"lat": 16.7743839701656,
+				"lon": 96.1588025093079,
+				"room_no": 123,
+				"building_no": 123,
+				"building_name":"Sumic Park View Building",
+				"street": "Alon Street",
+				"quarter": "",
+				"township": "Alon Township",
+				"city": "Yangon",
+				"country":"Myanmar",
+				"zip_code": 123
+			};
+			$.ajax({
+				url: "/poi",
+				type: "POST",
+				data: pData,	
+				complete: function(xhr){
+					var obj =JSON.parse(xhr.responseText);
+					alert(obj.message);
+				}
+			});
+		});
+			
+
+		</script>
+	</body>
+
+</html>

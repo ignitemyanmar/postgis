@@ -1,0 +1,23 @@
+Data from POI Table
+------------------------
+Distinct (amentiy)
+Distinct (aeroway)
+Distinct (religion)
+Distinct (tourism)
+Distinct (shop)
+Distinct (place)
+Distinct (railway)
+Distinct (building)
+Distinct (leisure)
+Distinct (landuse)
+Distinct (highway) bus_stop
+Distinct (man_made)
+Extract name, by distinct above
+
+POLYGON
+Distinct (amenity)
+Distinct (sport)
+Distinct (name)
+Distinct (hostoric)
+Extract records with the name (calculating the Centroid of Polygon)
+
